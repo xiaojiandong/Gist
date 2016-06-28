@@ -1,0 +1,30 @@
+/*Micro Clearfix*/
+/*The most recent and globally adopted clearfix solution, the Micro Clearfix by Nicolas Gallagher.*/
+.clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+//定义WebFont
+@font-face {
+  font-family: 'Example';
+  src: url('../fonts/example.eot');
+  src: url('../fonts/example.eot?iefix') format('eot'),
+  url('../fonts/example.woff') format('woff'),
+  url('../fonts/example.ttf') format('truetype'),
+  url('../fonts/example.svg#webfontOkOndcij') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//BEM语法约定
+//__双下划线代表B和E连接例如 menu__item
+//_单下划线代表B和M或E和M的连接 例如 menu_active 或 menu__item_active
+//-中划线同英语里做连字符例如 mod-menu 或 mod-menu__item 这里 B或E或M需要多个单词来描述,就使用中划线
