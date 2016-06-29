@@ -67,7 +67,7 @@ function Number2Chinese( $num, $format = true, $forPrice = false )
 	$rtnString = '';
 	if( ($float = reset( $floatArr )) !== '' )
 	{
-		$rtnString = $dot . Number2Chinese( $float, false );
+		$rtnString = $dot . Number2Chinese( $float, false, $forPrice );
 	}
 
 	$keep = [];
@@ -79,7 +79,14 @@ function Number2Chinese( $num, $format = true, $forPrice = false )
 			$keep[$index] = $chars[$char];
 			if( $format )
 			{
-				$keep[$index] .= $str[$index] != '0' ? $units[$index % 4] : '';
+				if( !$forPrice && $index % 4 == 1 && $str[$index] == 1 )
+				{
+					$keep[$index] = $str[$index] !== '0' ? $units[$index % 4] : '';
+				}
+				else
+				{
+					$keep[$index] .= $str[$index] !== '0' ? $units[$index % 4] : '';
+				}
 				if( $str[$index] + $str[$index - 1] == 0 )
 				{
 					$keep[$index] = '';
